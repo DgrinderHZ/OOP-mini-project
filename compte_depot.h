@@ -36,13 +36,8 @@ void CompteDepot::deposer(float somme){
 }
 
 void CompteDepot::saisir(){
-    //CompteDebot& c = *this;
-    //cin>>c;
-    cout<< "Veuillez saisir information de compte: \n";
-    cout<< "Date d'ouverture: \n"; cin>>dateOuverture;
-    cout<< "Solde: <<< "; cin >> solde;
-    cout<< "Liste des opérations: <<< " <<endl;
-    cout<< "Proprietaires: <<< "; cin >> proprietaire;
+
+    cin >> *this;
 
     cout << "Si vous aimeriez changer les valeurs de:\
               La valeurs minimale necessaire pour ouvrir un compte:\n\
@@ -57,35 +52,19 @@ void CompteDepot::saisir(){
         cin >>  maximale;
         cout << "Donner la valeur des frais de gestion: >>> ";
         cin >>  fraisFermeture;
+        compteOuvert[id] = *this;
     }
 
-    compteOuvert[id] = *this;
 }
 
 void CompteDepot::afficher(){
 
-        cout<< "Les information de compte: >>> ID= " << id <<endl;
-        cout<< "Date d'ouverture: >>> ";
-        dateOuverture.affiche();
-        cout <<endl;
-        cout<< "Solde: " << solde <<endl;
-        cout<< "Liste des operations: " <<endl;
-
-        for(auto it = listeOperation.begin(); it != listeOperation.end() ; it++){
-            pair<Date, vector<float>> date = *it;
-            cout<< " >>> Date: ";
-            date.first.affiche();
-            cout<< ":\n";
-            for(unsigned int i = 0; i < date.second.size(); i++){
-                cout << date.second[i] << " ";
-            }
-            cout<<endl;
-        }
-        cout << "Proprietaires: >>> ";
-        afficheProprietaire();
-
+        cout << *this;
 
         cout << "\nLa valeurs minimale necessaire pour ouvrir un compte: >>> "<< minimale <<endl;
         cout << "\nLa valeurs maximale autorise pour un compte depot: >>> "<< maximale <<endl;
         cout << "\nLa valeur des frais de gestion: "<< fraisFermeture <<endl;
 }
+
+
+
