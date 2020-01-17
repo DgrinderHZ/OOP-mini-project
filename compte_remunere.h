@@ -1,16 +1,17 @@
 #include "compte.h"
 
-class CompteDepot: public Compte{
+class CompteRemunere: public Compte{
 
-    float minimale, maximale;
-    float fraisFermeture;
+    static float taux;
+    float interetMensuel[12];
 public:
+    void calculerInteret();
     void fermer();
-    void deposer();
+    void deposer(float);
     void afficher();
     void saisir();
 };
-
+float CompteRemunere::taux = 0.2;
 
 void CompteRemunere::calculerInteret(){
     /// 1. calculer la moyenne du solde journalier
@@ -56,7 +57,7 @@ void CompteRemunere::deposer(float somme){
 }
 
 void CompteRemunere::saisir(){
-    //CompteDebot& c = *this;
+    //CompteRemunere& c = *this;
     //cin>>c;
     cout<< "Veuillez saisir information de compte: \n";
     cout<< "Date d'ouverture: \n"; cin>>dateOuverture;
@@ -66,8 +67,7 @@ void CompteRemunere::saisir(){
     compteOuvert[id] = *this;
 }
 
-void CompteDepot::afficher(){
-
+void CompteRemunere::afficher(){
         cout<< "Les information de compte: >>> ID= " << id <<endl;
         cout<< "Date d'ouverture: >>> ";
         dateOuverture.affiche();
@@ -88,8 +88,8 @@ void CompteDepot::afficher(){
         cout << "Proprietaires: >>> ";
         afficheProprietaire();
 
-
-        cout << "\nLa valeurs minimale necessaire pour ouvrir un compte: >>> "<< minimale <<endl;
-        cout << "\nLa valeurs maximale autorise pour un compte depot: >>> "<< maximale <<endl;
-        cout << "\nLa valeur des frais de gestion: "<< fraisFermeture <<endl;
+        calculerInteret();
+        cout << "\nTaux de remuneration: >>> "<< taux <<endl;
+        cout << "Interet mensuels: >>> MOIS(INTERET)\n";
+        for(int i = 0; i < 12; i++) cout << i<<"(" << interetMensuel[i] <<")"<< "| ";
 }

@@ -4,9 +4,12 @@
 using namespace std;
 
 class Date{
+
+public:
     int jour;
     int mois;
     int annee;
+
 public:
     bool operator==(Date& d){
         bool res = (jour == d.jour);

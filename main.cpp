@@ -1,19 +1,19 @@
 #include <iostream>
-#include "compte.h"
+#include "compte_remunere.h"
 
 using namespace std;
 
 int main()
 {
     cout << "Hello world!" << endl;
-    Compte c;
+    CompteRemunere c;
     c.ouvrir();
-    cin >> c;
+    c.saisir();
 
     c.deposer(100);
     //c.deposer(100);
     c.retirer(100);
-    cout << c;
+    c.afficher();
     c.fermer();
     return 0;
 }

@@ -12,6 +12,7 @@ using namespace std;
 
 class Compte{
 
+protected:
     int id;
     float solde;
     char proprietaire[41];
@@ -66,7 +67,7 @@ vector<Compte> Compte::compteOuvert;
 void Compte::ouvrir(){
         id = compteOuvert.size();
         compteOuvert.push_back(*this);
-    }
+}
 
 void Compte::fermer(){
     if(compteOuvert.size()){
@@ -81,29 +82,29 @@ void Compte::afficheProprietaire(){
 }
 
 
-void Compte::deposer(float montant){
-    solde += montant;
+void Compte::deposer(float somme){
+    solde += somme;
 
     Date date;
     cout<< "Saisir la date d'operation: \n";
     cin >> date;
 
     vector<float> tmp = listeOperation[date];
-    tmp.push_back(montant);
+    tmp.push_back(somme);
     listeOperation[date] = tmp;
     compteOuvert[id] = *this;
 }
 
-void Compte::retirer(float montant){
-    if(solde >= montant){
-        solde -= montant;
+void Compte::retirer(float somme){
+    if(solde >= somme){
+        solde -= somme;
 
         Date date;
         cout<< "Saisir la date d'operation: \n";
         cin >> date;
 
         vector<float> tmp = listeOperation[date];
-        tmp.push_back(-montant);
+        tmp.push_back(-somme);
         listeOperation[date] = tmp;
         compteOuvert[id] = *this;
     }
