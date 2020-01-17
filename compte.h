@@ -1,5 +1,5 @@
-#ifndef H_CLASSES
-#define H_CLASSES
+#ifndef H_COMPTE
+#define H_COMPTE
 #include<istream>
 #include<ostream>
 #include<iostream>
@@ -109,4 +109,4 @@ void Compte::retirer(float montant){
     }
 }
 
-#endif // H_CLASSES
+#endif // H_COMPTE
