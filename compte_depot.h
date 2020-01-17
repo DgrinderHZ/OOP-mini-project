@@ -5,57 +5,37 @@ class CompteDepot: public Compte{
     float minimale, maximale;
     float fraisFermeture;
 public:
+    CompteDepot(float mn=100, float mx=100000, float ff=200){
+        minimale = mn;
+        maximale = mx;
+        fraisFermeture = ff;
+    }
     void fermer();
-    void deposer();
+    void deposer(float);
     void afficher();
     void saisir();
 };
 
 
-void CompteRemunere::calculerInteret(){
-    /// 1. calculer la moyenne du solde journalier
-    /// pour chaque mois dans la liste des operations
-    /// ajouter le solde au mois correspondant
-    int operParMois[12];
-    for(int i = 0; i < 12; i++) {
-            interetMensuel[i] = 0.0;
-            operParMois[i] = 0;
-    }
-    /// calculer les sommes
-    for(auto it = listeOperation.begin(); it != listeOperation.end() ; it++){
-            pair<Date, vector<float>> date = *it;
-            for(unsigned int i = 0; i < date.second.size() ; i++){
-                interetMensuel[date.first.mois - 1] += date.second.at(i);
-                operParMois[date.first.mois - 1] += 1;
-            }
-        }
-    /// calcules les moyennes et multiplier par le taux
-    for(int i = 0; i < 12; i++){
-        if(operParMois[i] == 0)
-            interetMensuel[i] = 0;
-        else
-            interetMensuel[i] = (interetMensuel[i]/operParMois[i])*taux;
-    }
-}
-
-void CompteRemunere::fermer(){
+void CompteDepot::fermer(){
     if(compteOuvert.size()){
-        calculerInteret();
-        float interet = 0;
-        for(int i = 0; i < 12; i++) interet += interetMensuel[i];
-        cout << "\nPlus a un interet de = " << interet << endl;
-        Compte::fermer();
+        cout << "Apres prelevement des frais de gestion:\n";
+        cout << "\nLe solde = " << solde - fraisFermeture << endl;
+        compteOuvert.erase(compteOuvert.begin()+id);
     }
 }
 
 
-void CompteRemunere::deposer(float somme){
-    if(somme > 1000) somme += (somme/1000+1);
-    else somme += 1;
+void CompteDepot::deposer(float somme){
+
+    if(somme > 10000) fraisFermeture += 20;
+    else if(somme > 1000) fraisFermeture -= (somme/1000+1);
+    else fraisFermeture--;
+
     Compte::deposer(somme);
 }
 
-void CompteRemunere::saisir(){
+void CompteDepot::saisir(){
     //CompteDebot& c = *this;
     //cin>>c;
     cout<< "Veuillez saisir information de compte: \n";
@@ -63,6 +43,22 @@ void CompteRemunere::saisir(){
     cout<< "Solde: <<< "; cin >> solde;
     cout<< "Liste des opérations: <<< " <<endl;
     cout<< "Proprietaires: <<< "; cin >> proprietaire;
+
+    cout << "Si vous aimeriez changer les valeurs de:\
+              La valeurs minimale necessaire pour ouvrir un compte:\n\
+               La valeurs maximale autorise pour un compte depot:\n\
+                La valeur des frais de gestion: \
+                Tapez >>> 1, sinon tapez >>> 0!: ";
+    int cc; cin >> cc;
+    if(cc == 1){
+        cout<< "Donner la valeurs minimale necessaire pour ouvrir un compte: >>> ";
+        cin >> minimale ;
+        cout << "Donner la valeurs maximale autorise pour un compte depot: >>> ";
+        cin >>  maximale;
+        cout << "Donner la valeur des frais de gestion: >>> ";
+        cin >>  fraisFermeture;
+    }
+
     compteOuvert[id] = *this;
 }
 
