@@ -3,8 +3,8 @@
 
 #include "compte.h"
 
-class CompteRemunere: public Compte{
-
+class CompteRemunere: virtual public Compte{
+protected:
     static float taux;
     float interetMensuel[12];
 public:
