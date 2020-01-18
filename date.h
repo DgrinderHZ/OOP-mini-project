@@ -1,5 +1,6 @@
 #ifndef H_DATE
 #define H_DATE
+
 #include<iostream>
 using namespace std;
 

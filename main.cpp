@@ -1,14 +1,17 @@
 #include <iostream>
-#include "compte_remunere.h"
+#include "compte_depot_entreprise.h"
 
 using namespace std;
 
 int main()
 {
     cout << "Hello world!" << endl;
-    CompteRemunere c;
+    vector<string> dd(2);
+    cin >> dd[0];
+    cin >> dd[1];
+    CompteDepotEntreprise c(&dd);
     c.ouvrir();
-    c.saisir();
+    c.saisir(NULL);
 
     c.deposer(100);
     //c.deposer(100);

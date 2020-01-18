@@ -1,3 +1,6 @@
+#ifndef H_CRENUM
+#define H_CRENUM
+
 #include "compte.h"
 
 class CompteRemunere: public Compte{
@@ -57,39 +60,18 @@ void CompteRemunere::deposer(float somme){
 }
 
 void CompteRemunere::saisir(){
-    //CompteRemunere& c = *this;
-    //cin>>c;
-    cout<< "Veuillez saisir information de compte: \n";
-    cout<< "Date d'ouverture: \n"; cin>>dateOuverture;
-    cout<< "Solde: <<< "; cin >> solde;
-    cout<< "Liste des opérations: <<< " <<endl;
-    cout<< "Proprietaires: <<< "; cin >> proprietaire;
+    cin >> *this;
     compteOuvert[id] = *this;
 }
 
 void CompteRemunere::afficher(){
-        cout<< "Les information de compte: >>> ID= " << id <<endl;
-        cout<< "Date d'ouverture: >>> ";
-        dateOuverture.affiche();
-        cout <<endl;
-        cout<< "Solde: " << solde <<endl;
-        cout<< "Liste des operations: " <<endl;
-
-        for(auto it = listeOperation.begin(); it != listeOperation.end() ; it++){
-            pair<Date, vector<float>> date = *it;
-            cout<< " >>> Date: ";
-            date.first.affiche();
-            cout<< ":\n";
-            for(unsigned int i = 0; i < date.second.size(); i++){
-                cout << date.second[i] << " ";
-            }
-            cout<<endl;
-        }
-        cout << "Proprietaires: >>> ";
-        afficheProprietaire();
+        cout << *this;
 
         calculerInteret();
         cout << "\nTaux de remuneration: >>> "<< taux <<endl;
         cout << "Interet mensuels: >>> MOIS(INTERET)\n";
         for(int i = 0; i < 12; i++) cout << i<<"(" << interetMensuel[i] <<")"<< "| ";
 }
+
+
+#endif // H_CRENUM

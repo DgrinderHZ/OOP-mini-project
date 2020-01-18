@@ -1,15 +1,21 @@
+#ifndef H_CDEPOT
+#define H_CDEPOT
+
 #include "compte.h"
 
-class CompteDepot: public Compte{
+class CompteDepot: virtual public Compte{
 
+protected:
     float minimale, maximale;
     float fraisFermeture;
 public:
+
     CompteDepot(float mn=100, float mx=100000, float ff=200){
         minimale = mn;
         maximale = mx;
         fraisFermeture = ff;
     }
+
     void fermer();
     void deposer(float);
     void afficher();
@@ -68,3 +74,5 @@ void CompteDepot::afficher(){
 
 
 
+
+#endif // H_CDEPOT

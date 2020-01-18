@@ -1,5 +1,6 @@
 #ifndef H_COMPTE
 #define H_COMPTE
+
 #include<istream>
 #include<ostream>
 #include<iostream>

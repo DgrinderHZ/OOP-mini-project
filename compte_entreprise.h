@@ -1,8 +1,11 @@
+#ifndef H_CENTR
+#define H_CENTR
+
 #include "compte.h"
 #include<string>
 
-class CompteEntreprise: public Compte{
-
+class CompteEntreprise: virtual public Compte{
+protected:
     vector<string> personneAutorises;
 public:
     CompteEntreprise(vector<string> *perAuto){
@@ -35,3 +38,6 @@ void CompteEntreprise::afficher(){
             cout << personneAutorises[i] << "\n";
 
 }
+
+
+#endif // H_CENTR

@@ -1,7 +1,10 @@
+#ifndef H_CPERS
+#define H_CPERS
+
 #include "compte.h"
 
-class ComptePersonne: public Compte{
-
+class ComptePersonne: virtual public Compte{
+protected:
     int valeurDecouvert; /// nombre de jours
 public:
     ComptePersonne(int v=30): valeurDecouvert(v){}
@@ -34,3 +37,6 @@ void ComptePersonne::afficher(){
 
         cout << "\nLa valeurs du decouvert: >>> "<< valeurDecouvert <<endl;
 }
+
+
+#endif // H_CPERS
