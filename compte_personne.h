@@ -11,13 +11,8 @@ public:
 
 
 void ComptePersonne::saisir(){
-    //CompteDebot& c = *this;
-    //cin>>c;
-    cout<< "Veuillez saisir information de compte: \n";
-    cout<< "Date d'ouverture: \n"; cin>>dateOuverture;
-    cout<< "Solde: <<< "; cin >> solde;
-    cout<< "Liste des opérations: <<< " <<endl;
-    cout<< "Proprietaires: <<< "; cin >> proprietaire;
+
+    cin >> *this;
 
     cout << "Si vous aimeriez changer les valeurs de:\
              La valeurs du decouvert:  \
@@ -28,9 +23,9 @@ void ComptePersonne::saisir(){
     if(cc == 1){
         cout << "Donner La valeurs du decouvert: >>> ";
         cin >> valeurDecouvert;
+        compteOuvert[id] = *this;
     }
 
-    compteOuvert[id] = *this;
 }
 
 void ComptePersonne::afficher(){
