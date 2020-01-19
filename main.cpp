@@ -1,23 +1,19 @@
 #include <iostream>
-#include "compte_depot_remunere_entreprise.h"
+#include "gestion.h"
 
 using namespace std;
 
 int main()
 {
     cout << "Hello world!" << endl;
-    vector<string> dd(2);
-    cin >> dd[0];
-    cin >> dd[1];
-    //CompteRemunereEntreprise c(&dd);
-    CompteDepotRemunereEntreprise c(&dd);
-    c.ouvrir();
-    c.saisir(NULL);
+    GestionComptes gerer;
 
-    //c.deposer(100);
-    c.deposer(100);
-    c.retirer(100);
-    c.afficher();
-    c.fermer();
+    gerer.ouvreUnCompte();
+    gerer.deposerUnSomme();
+    gerer.afficherDesOperationDeMoisCourant();
+    gerer.afficherLesInfoDesProprietaires();
+    gerer.afficherListesDesComptes();
+    gerer.chercherUnCompte();
+    gerer.fermerUnCompte();
     return 0;
 }

@@ -16,12 +16,17 @@ class Compte{
 protected:
     int id;
     float solde;
-    char proprietaire[41];
+    string proprietaire;
     Date dateOuverture;
     map<Date, vector<float> > listeOperation;
 
 public:
     static vector<Compte> compteOuvert;
+    int getId(){ return id; }
+    string getProprietaires(){ return proprietaire; }
+    map<Date, vector<float> >& getListeDesOperation(){
+        return listeOperation;
+    }
     void ouvrir();
     void deposer(float montant);
     void retirer(float montant);
@@ -56,7 +61,12 @@ public:
         cout<< "Date d'ouverture: \n"; cin>>c.dateOuverture;
         cout<< "Solde: <<< "; cin >> c.solde;
         cout<< "Liste des opérations: <<< " <<endl;
-        cout<< "Proprietaires: <<< "; cin >> c.proprietaire;
+        cout<< "Proprietaires: <<< ";
+        cout << "FORMAT: (PERSO ou ENTER) NOM PRENOM DATENAISSANCE\n";
+        cout << "Si type est ENTER, alors NOM = ENTERPRISE!\n";
+        cin.ignore(); /// vider le buffer
+        getline(cin, c.proprietaire);
+
         c.compteOuvert[c.id] = c;
         return is;
     }
