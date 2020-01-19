@@ -4,7 +4,7 @@
 #include "compte_remunere.h"
 #include "compte_personne.h"
 
-class CompteRemunerePersonne: public CompteRemunere, public ComptePersonne{
+class CompteRemunerePersonne: public CompteRemunere, virtual public ComptePersonne{
 
 public:
 
@@ -37,9 +37,9 @@ void CompteRemunerePersonne::saisir(){
 void CompteRemunerePersonne::afficher(){
     cout << *this;
     calculerInteret();
-        cout << "\nTaux de remuneration: >>> "<< taux <<endl;
-        cout << "Interet mensuels: >>> MOIS(INTERET)\n";
-        for(int i = 0; i < 12; i++) cout << i<<"(" << interetMensuel[i] <<")"<< "| ";
+    cout << "\nTaux de remuneration: >>> "<< taux <<endl;
+    cout << "Interet mensuels: >>> MOIS(INTERET)\n";
+    for(int i = 0; i < 12; i++) cout << i<<"(" << interetMensuel[i] <<")"<< "| ";
 
     cout << "\nLa valeurs du decouvert: >>> "<< valeurDecouvert <<endl;
 

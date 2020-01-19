@@ -34,7 +34,7 @@ void CompteEntreprise::afficher(){
         cout << *this;
 
         cout << "\nListe des personnes autorises: >>> \n"<<endl;
-        for(int i = 0; i < personneAutorises.size(); i++)
+        for(unsigned int i = 0; i < personneAutorises.size(); i++)
             cout << personneAutorises[i] << "\n";
 
 }

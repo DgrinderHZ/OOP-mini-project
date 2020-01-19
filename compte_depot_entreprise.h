@@ -37,7 +37,7 @@ void CompteDepotEntreprise::afficher(){
     cout << "\nLa valeur des frais de gestion: "<< fraisFermeture <<endl;
 
     cout << "\nListe des personnes autorises: >>> \n"<<endl;
-        for(int i = 0; i < personneAutorises.size(); i++)
+        for(unsigned int i = 0; i < personneAutorises.size(); i++)
             cout << personneAutorises[i] << "\n";
 }
 #endif // H_CDE

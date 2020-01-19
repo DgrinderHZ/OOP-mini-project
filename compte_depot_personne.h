@@ -3,7 +3,7 @@
 #include "compte_depot.h"
 #include "compte_personne.h"
 
-class CompteDepotPersonne: public CompteDepot, public ComptePersonne{
+class CompteDepotPersonne: public CompteDepot, virtual public ComptePersonne{
 
 public:
 
@@ -19,7 +19,7 @@ void CompteDepotPersonne::saisir(){
 
     CompteDepot::saisir();
     /// Partie personne
-    cout << "Si vous aimeriez changer les valeurs de:\
+    cout << "Si vous aimeriez changer les valeurs par defaut de:\
              La valeurs du decouvert:  \
              Tapez >>> 1, sinon tapez >>> 0!: \n";
 

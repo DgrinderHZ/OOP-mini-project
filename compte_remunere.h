@@ -43,13 +43,12 @@ void CompteRemunere::calculerInteret(){
 }
 
 void CompteRemunere::fermer(){
-    if(compteOuvert.size()){
+
         calculerInteret();
         float interet = 0;
         for(int i = 0; i < 12; i++) interet += interetMensuel[i];
         cout << "\nPlus a un interet de = " << interet << endl;
         Compte::fermer();
-    }
 }
 
 

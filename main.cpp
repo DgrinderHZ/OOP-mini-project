@@ -1,5 +1,5 @@
 #include <iostream>
-#include "compte_remunere_personne.h"
+#include "compte_depot_remunere_entreprise.h"
 
 using namespace std;
 
@@ -9,12 +9,13 @@ int main()
     vector<string> dd(2);
     cin >> dd[0];
     cin >> dd[1];
-    CompteRemunerePersonne c;
+    //CompteRemunereEntreprise c(&dd);
+    CompteDepotRemunereEntreprise c(&dd);
     c.ouvrir();
-    c.saisir();
+    c.saisir(NULL);
 
-    c.deposer(100);
     //c.deposer(100);
+    c.deposer(100);
     c.retirer(100);
     c.afficher();
     c.fermer();
