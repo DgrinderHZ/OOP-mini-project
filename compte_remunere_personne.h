@@ -9,7 +9,11 @@ class CompteRemunerePersonne: public CompteRemunere, virtual public ComptePerson
 public:
 
     CompteRemunerePersonne(int valeurDec=30):
-        ComptePersonne(valeurDec){}
+        ComptePersonne(valeurDec){
+
+        cout << "Creation CompteRemunerePersonne... ";
+
+        }
 
     void afficher();
     void saisir();
@@ -20,8 +24,8 @@ void CompteRemunerePersonne::saisir(){
 
     CompteRemunere::saisir();
     /// Partie personne
-    cout << "Si vous aimeriez changer les valeurs de:\
-             La valeurs du decouvert:  \
+    cout << "Si vous aimeriez changer les valeurs par defaut de:\n\
+             La valeurs du decouvert:\n  \
              Tapez >>> 1, sinon tapez >>> 0!: \n";
 
     int cc; cin >> cc;

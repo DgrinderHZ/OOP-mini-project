@@ -19,8 +19,8 @@ void CompteDepotPersonne::saisir(){
 
     CompteDepot::saisir();
     /// Partie personne
-    cout << "Si vous aimeriez changer les valeurs par defaut de:\
-             La valeurs du decouvert:  \
+    cout << "Si vous aimeriez changer les valeurs par defaut de:\n\
+             La valeurs du decouvert:\n  \
              Tapez >>> 1, sinon tapez >>> 0!: \n";
 
     int cc; cin >> cc;

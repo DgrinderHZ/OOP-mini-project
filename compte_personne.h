@@ -17,8 +17,8 @@ void ComptePersonne::saisir(){
 
     cin >> *this;
 
-    cout << "Si vous aimeriez changer les valeurs de:\
-             La valeurs du decouvert:  \
+    cout << "Si vous aimeriez changer les valeurs de:\n\
+             La valeurs du decouvert:\n  \
              Tapez >>> 1, sinon tapez >>> 0!: \n";
 
     int cc; cin >> cc;

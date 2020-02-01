@@ -56,10 +56,7 @@ public:
                 CompteRemunere c;
                 c.ouvrir();
                 c.saisir();
-                c.deposer(100);
-                c.retirer(100);
-                c.afficher();
-                c.fermer();
+
             }
             break;
         case 3:
@@ -68,10 +65,8 @@ public:
                 ComptePersonne c;
                 c.ouvrir();
                 c.saisir();
-                c.deposer(1000);
-                c.retirer(1000);
-                c.afficher();
-                c.fermer();
+
+
             }
             break;
         case 4:
@@ -89,10 +84,7 @@ public:
                 CompteEntreprise c(&dd);
                 c.ouvrir();
                 c.saisir(NULL);
-                c.deposer(1000);
-                c.retirer(1000);
-                c.afficher();
-                c.fermer();
+
             }
             break;
         case 5:
@@ -100,10 +92,7 @@ public:
                 CompteDepotPersonne c;
                 c.ouvrir();
                 c.saisir();
-                c.deposer(1000);
-                c.retirer(1000);
-                c.afficher();
-                c.fermer();
+
             }
             break;
         case 6:
@@ -192,9 +181,14 @@ public:
 
          cout << "Veuillez choisir votre ID: ";
          int id; cin >> id;
-         cout << "Veuillez saisir la somme a deposer: ";
-         float somme; cin >> somme;
-         Compte::compteOuvert[id].deposer(somme);
+         if(id < 0 || id >= Compte::compteOuvert.size())
+            cout << "\nEreur!!!!!!!!! ID non valide!\n";
+         else{
+               cout << "\nVeuillez saisir la somme a deposer: ";
+             float somme; cin >> somme;
+             Compte::compteOuvert[id].deposer(somme);
+         }
+
     }
 
 /********************** (c) affichage des opération de mois en cours *********************/
@@ -208,25 +202,31 @@ public:
 
          cout << "\nVeuillez choisir votre ID: ";
          int id; cin >> id;
-         cout << "Voici la liste des operation de mois en cours: \n";
-         /// TODO
-         char moisEnCours[3];
-         time_t t = time(0);
-         strftime(moisEnCours, 3, "%m", localtime(&t));
-         auto fin = Compte::compteOuvert[id].getListeDesOperation().end();
-         for(auto it = Compte::compteOuvert[id].getListeDesOperation().begin(); it != fin ; it++){
-            pair<Date, vector<float>> date = *it;
-            if(atoi(moisEnCours) == date.first.mois){
-                cout<< " >>> Date: ";
-                date.first.affiche();
-                cout<< ":\n";
-                cout << "Operations: ";
-                for(unsigned int ii = 0; ii < date.second.size(); ii++){
-                    cout << date.second[ii] << " ";
+         if(id < 0 || id >= Compte::compteOuvert.size())
+            cout << "\nEreur!!!!!!!!! ID non valide!\n";
+         else{
+                cout << "Voici la liste des operation de mois en cours: \n";
+
+             /// TODO/: LA DATE EN COURS
+             char moisEnCours[3];
+             time_t t = time(0);
+             strftime(moisEnCours, 3, "%m", localtime(&t));
+
+             auto fin = Compte::compteOuvert[id].getListeDesOperation().end();
+             for(auto it = Compte::compteOuvert[id].getListeDesOperation().begin(); it != fin ; it++){
+                pair<Date, vector<float>> date = *it;
+                if(atoi(moisEnCours) == date.first.mois){
+                    cout<< " >>> Date: ";
+                    date.first.affiche();
+                    cout<< ":\n";
+                    cout << "Operations: ";
+                    for(unsigned int ii = 0; ii < date.second.size(); ii++){
+                        cout << date.second[ii] << " ";
+                    }
+                    cout<<endl;
                 }
-                cout<<endl;
             }
-        }
+         }
     }
 
 
@@ -258,7 +258,7 @@ public:
         cout << "Veuillez saisir le nom, prénom et date de naissance de ses propriétaires:\n";
         cout << "FORMAT: (PERSO ou ENTER) NOM PRENOM DATENAISSANCE:\n";
         cout << "Exemple Personne: PERSO ALI MOHAMED 17/01/1942\n";
-        cout << "Exemple Personne: ENTER MICROSOFT 26/11/1976\n";
+        cout << "Exemple Entreprise: ENTER MICROSOFT 26/11/1976\n";
         string info;
         cin.ignore();
         getline(cin, info);
